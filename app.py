@@ -1,6 +1,8 @@
 """The app module, containing the app factory function."""
 from flask import Flask
 from flask_cors import CORS
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 from config import Config
 from exceptions import WeatherException
@@ -19,6 +21,9 @@ def create_app(config_object=Config):
     """
     app = Flask(__name__)
     app.config.from_object(config_object)
+
+    Limiter(app, key_func=get_remote_address, default_limits=["3 per minute"])
+
     register_errorhandlers(app)
     register_blueprints(app)
     return app

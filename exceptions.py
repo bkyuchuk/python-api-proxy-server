@@ -11,6 +11,7 @@ def create_exception(data: list[str], code=500):
 
 CITY_NOT_FOUND = create_exception(["City not found."], code=404)
 UNAUTHORIZED = create_exception(["Invalid API key."], code=401)
+LIMIT_EXCEEDED = create_exception(["Requests limit exceeded"], code=429)
 UNKNOWN = create_exception(["Unknown error."], code=500)
 
 
@@ -42,3 +43,7 @@ class WeatherException(Exception):
     @classmethod
     def unknown(cls):
         return cls(**UNKNOWN)
+
+    @classmethod
+    def limit_exceeded(cls):
+        return cls(**LIMIT_EXCEEDED)

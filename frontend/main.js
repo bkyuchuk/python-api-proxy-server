@@ -14,13 +14,8 @@ const fetchWeather = async (city) => {
     const res = await fetch(request)
     const data = await res.json()
 
-    if (res.status === 404) {
-        alert('City not found.')
-        return
-    }
-
-    if (res.status === 401) {
-        alert('Invalid API Key.')
+    if (res.status != 200) {
+        alert(errors[res.status])
         return
     }
 
@@ -30,6 +25,12 @@ const fetchWeather = async (city) => {
     }
 
     displayWeather(weather)
+}
+
+errors = {
+    404: "City not found.",
+    401: "Invalid API key.",
+    429: "Request limit exceeded."
 }
 
 const displayWeather = (data) => {

@@ -33,5 +33,6 @@ def get_weather_exception(status_code: int) -> WeatherException:
     possible_exceptions = {
         404: WeatherException.city_not_found(),
         401: WeatherException.unauthorized(),
+        429: WeatherException.limit_exceeded(),
     }
     return possible_exceptions.get(status_code, WeatherException.unknown())
