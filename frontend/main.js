@@ -2,6 +2,7 @@ const weatherView = document.querySelector('.weather')
 const weatherForm = document.querySelector('#weather-form')
 const cityInput = document.querySelector('#city-input')
 
+// TODO: Change this before deployment.
 BASE_URL = "http://localhost:5000"
 
 const fetchWeather = async (city) => {

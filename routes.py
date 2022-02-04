@@ -1,8 +1,8 @@
 from flask import Blueprint, current_app, request
 from requests import RequestException, get
 
+from config import Config
 from exceptions import WeatherException
-from settings import Config
 
 blueprint = Blueprint("weather", __name__)
 
@@ -12,8 +12,10 @@ def get_weather():
     """
     Get the weather for a given city passed as a URL param.
     """
-    city = request.args.get("q")
-    payload = {"q": city, Config.API_KEY_NAME: Config.API_KEY_VALUE}
+    payload = {
+        Config.API_KEY_NAME: Config.API_KEY_VALUE,
+        **request.args,
+    }
 
     try:
         response = get(Config.API_BASE_URL, params=payload)

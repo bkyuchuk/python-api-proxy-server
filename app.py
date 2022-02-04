@@ -2,9 +2,9 @@
 from flask import Flask
 from flask_cors import CORS
 
+from config import Config
 from exceptions import WeatherException
 from routes import blueprint
-from settings import Config
 
 cors = CORS()
 
