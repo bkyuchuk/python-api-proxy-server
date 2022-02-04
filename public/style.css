@@ -1,0 +1,64 @@
+@font-face {
+    font-family: Poppins;
+    src: url(assets/Poppins-Light.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Poppins;
+    line-height: 1.6;
+    background-color: #431a8e;
+    color: #fff;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.container {
+    max-width: 500px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+input:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: #fff;
+}
+
+button {
+    padding: 13px;
+    width: 300px;
+    border: none;
+    background-color: black;
+    color: #fff;
+    margin-top: 30px;
+    border-radius: 25px;
+}
+
+button:hover {
+    background-color: #fff;
+    color: black;
+    cursor: pointer;
+}
