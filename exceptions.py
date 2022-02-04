@@ -3,7 +3,7 @@ from flask import jsonify
 
 def create_exception(data: list[str], code=500):
     """
-    Create a dict containing the `text` and `code` of the
+    Create a dict containing the `data` and `code` of the
     exception to be created.
     """
     return {"message": {"errors": {"body": data}}, "status_code": code}

@@ -2,8 +2,10 @@ const weatherView = document.querySelector('.weather')
 const weatherForm = document.querySelector('#weather-form')
 const cityInput = document.querySelector('#city-input')
 
+BASE_URL = "http://localhost:5000"
+
 const fetchWeather = async (city) => {
-    const url = `http://localhost:5000/api?q=${city}`
+    const url = `${BASE_URL}/api?q=${city}`
     const request = new Request(url, {
         method: "GET",
     })
@@ -11,19 +13,19 @@ const fetchWeather = async (city) => {
     const res = await fetch(request)
     const data = await res.json()
 
-    if (data.cod === '404') {
+    if (res.status === 404) {
         alert('City not found.')
         return
     }
 
-    if (data.cod === 401) {
+    if (res.status === 401) {
         alert('Invalid API Key.')
         return
     }
 
     const weather = {
         city: data.name,
-        temp: kelvinToFahrenheit(data.main.temp),
+        temp: kelvinToCelcius(data.main.temp),
     }
 
     displayWeather(weather)
@@ -32,13 +34,13 @@ const fetchWeather = async (city) => {
 const displayWeather = (data) => {
     weatherView.innerHTML = `
     <h1>Weather in ${data.city}</h1>
-    <h2>${data.temp} &deg;F</h2>
+    <h2>${data.temp} &deg;C</h2>
   `
     cityInput.value = ''
 }
 
-const kelvinToFahrenheit = (temp) => {
-    return Math.ceil(((temp - 273.15) * 9) / 5 + 32)
+const kelvinToCelcius = (temp) => {
+    return Math.ceil(temp - 273.15);
 }
 
 weatherForm.addEventListener('submit', (e) => {
@@ -52,4 +54,4 @@ weatherForm.addEventListener('submit', (e) => {
 })
 
 // Initial fetch
-fetchWeather('Miami')
+fetchWeather('Berlin')

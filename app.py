@@ -37,6 +37,5 @@ def register_blueprints(app: Flask) -> None:
     """
     Register Flask blueprints and enable CORS.
     """
-    origins = app.config.get("CORS_ORIGIN_WHITELIST", "*")
-    cors.init_app(blueprint, origins=origins)
+    cors.init_app(blueprint, origins="*")
     app.register_blueprint(blueprint)
