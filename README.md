@@ -3,6 +3,8 @@
 A simple proxy server built with Flask (Python). It can be used for hiding API keys as well as rate limiting. This uses the [OpenWeather API](https://openweathermap.org/api), but you can easily change it to whatever public API you want. The project
 is a spinoff of Brad Traversy's [Node API Proxy Server](https://github.com/bradtraversy/node-api-proxy-server).
 
+![Weather App](./frontend/weather-app.gif)
+
 ## Usage
 
 To install the dependencies you need to have [Pipenv](https://pipenv.pypa.io/en/latest/).
