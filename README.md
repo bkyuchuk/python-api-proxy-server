@@ -13,6 +13,7 @@ To install the dependencies you need to have [Pipenv](https://pipenv.pypa.io/en/
 
 ```bash
 pipenv install
+pipenv shell
 ```
 
 ### Run on http://localhost:5000

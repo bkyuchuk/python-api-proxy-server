@@ -25,6 +25,9 @@ pip-log.txt
 .tox
 nosetests.xml
 
+# .env file
+.env
+
 # Translations
 *.mo
 
