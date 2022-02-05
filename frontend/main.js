@@ -30,7 +30,7 @@ const fetchWeather = async (city) => {
 errors = {
     404: "City not found.",
     401: "Invalid API key.",
-    429: "Request limit exceeded."
+    429: "Requests limit exceeded."
 }
 
 const displayWeather = (data) => {

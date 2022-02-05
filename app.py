@@ -4,14 +4,12 @@ from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
-from config import Config
+from config import DevConfig
 from exceptions import WeatherException
 from routes import blueprint
 
-cors = CORS()
 
-
-def create_app(config_object=Config):
+def create_app(config_object=DevConfig):
     """
     An application factory method, as explained here:
     https://flask.palletsprojects.com/en/2.0.x/patterns/appfactories/
@@ -40,7 +38,8 @@ def register_errorhandlers(app: Flask) -> None:
 
 def register_blueprints(app: Flask) -> None:
     """
-    Register Flask blueprints and enable CORS.
+    Register Flask blueprints and enable CORS for them.
     """
+    cors = CORS()
     cors.init_app(blueprint, origins="*")
     app.register_blueprint(blueprint)

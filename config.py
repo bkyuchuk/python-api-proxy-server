@@ -11,3 +11,17 @@ class Config(object):
     API_BASE_URL = os.environ.get("API_BASE_URL", "base-url")
     API_KEY_NAME = os.environ.get("API_KEY_NAME", "api-key-name")
     API_KEY_VALUE = os.environ.get("API_KEY_VALUE", "api-key-value")
+
+
+class ProdConfig(Config):
+    """Production configuration"""
+
+    ENV = "prod"
+    DEBUG = False
+
+
+class DevConfig(Config):
+    """Development configuration"""
+
+    ENV = "dev"
+    DEBUG = True
